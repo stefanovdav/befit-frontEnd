@@ -1,0 +1,43 @@
+:root {
+  --mainOpacity: rgba(0, 0, 0, 0.55);
+}
+
+.header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/publicImages/homePage_BeFit_Og.jpeg");
+  background-size: cover;
+  height: 60em;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.active {
+  font-weight: bold;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.main-color {
+  background-color: #414f55;
+}
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}
+
+.signIn-gap {
+  gap: 12vw;
+}
+
+.allignNavbuttonCenter {
+  display: flex;
+  justify-content: center;
+}
