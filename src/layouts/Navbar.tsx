@@ -1,17 +1,22 @@
-import { left } from "@popperjs/core";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+
 
 export const Navbar = () => {
-
+    const [username, setUsername] = useState(localStorage.getItem('username') || 'David');
+    const [avatarUrl, setAvatarUrl] = useState(localStorage.getItem('avatarUrl') || 'https://www.w3schools.com/howto/img_avatar.png');
 
     return (
         <nav className='navbar navbar-dark main-color bg-dark py-4'>
             <div className='container-fluid'>
                 <span className='navbar-brand active'>BeFit.</span>
                 <div className="navbar-nav" style={{ gap: "8px" }}>
-                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style={{ width: "120px" }} />
-                    <span style={{ color: "white", float: 'right', marginRight: '10px', alignSelf: "center", fontWeight: "bold" }}>David</span>
+                    {window.location.pathname === '/mainPage' ?
+                        <img src={avatarUrl} alt="Avatar" style={{ width: "120px" }} />
+                        : null}
+                    {window.location.pathname === '/mainPage' ?
+                        <span style={{ color: "white", float: 'right', marginRight: '10px', alignSelf: "center", fontWeight: "bold" }}>{username}</span>
+                        : null}
                 </div>
                 <button className='navbar-toggler'
                     type='button'
@@ -51,7 +56,7 @@ export const Navbar = () => {
                     </ul>
                     <ul className='navbar-nav ms-auto'>
                         {window.location.pathname === '/mainPage' ? <li className='nav-item m-1 allignNavbuttonCenter'>
-                            <Link className="nav-link btn btn-outline-light active" style={{ color: 'black', fontWeight: 'bold', width: '60%' }} to="#" onClick={() => window.location.replace("#")}>Change</Link>
+                            <Link className="nav-link btn btn-outline-light active" style={{ color: 'black', fontWeight: 'bold', width: '60%' }} to="#" onClick={() => window.location.replace("#")}>Change Avatar</Link>
                         </li> : null}
                     </ul>
 
@@ -62,7 +67,15 @@ export const Navbar = () => {
                     </ul>
                     <ul className='navbar-nav ms-auto' >
                         {window.location.pathname === '/mainPage' ? <li className='nav-item m-1 allignNavbuttonCenter' >
-                            <Link className="nav-link btn btn-outline-light active " style={{ color: 'black', fontWeight: 'bold', width: '60%' }} to="#" onClick={() => window.location.replace("#")}>Log Out</Link>
+                            <Link
+                                className="nav-link btn btn-outline-light active"
+                                style={{ color: 'black', fontWeight: 'bold', width: '60%' }}
+                                to="/homePage"
+                                onClick={() => {
+                                    localStorage.clear();
+                                    window.location.replace("/homePage");
+                                }}
+                            >Log Out</Link>
                         </li> : null}
                     </ul>
                 </div>

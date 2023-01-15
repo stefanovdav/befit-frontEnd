@@ -54,7 +54,6 @@ export const SignIn = () => {
                 return res.json();
             })
             .then((data: any) => {
-                debugger;
                 localStorage.setItem('userToken', data.accessToken);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('avatarUrl', data.avatarURL);
